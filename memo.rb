@@ -2,7 +2,7 @@ require "csv"
 
 puts "1(新規でメモを作成) 2(既存のメモ編集する)"
  
-memo_type = gets.to_s
+memo_type = gets.to_i
 
  
 #続きを書いていきましょう！！(ifで条件分岐)
@@ -17,8 +17,8 @@ if memo_type == 1
     
     memo_content = $stdin.readlines
     
-    string_csv = CSV.open("@{newfile_name}.csv", "w") do |newfile_name|
-        string_csv.push(memo_content)
+    CSV.open("@{newfile_name}.csv", "w") do |newfile_name|
+        newfile_name << ["@{memo_content}"]
     end
     
 else
@@ -37,7 +37,7 @@ else
     f.close
     p s
     
-    string_csv = CSV.open("@{updatefile_name}.csv", "w") do |updatefile_name|
-    string_csv.push(memo_content)
+    CSV.open("@{updatefile_name}.csv", "w") do |updatefile_name|
+        updatefile_name << ["@{memo_content}"]
     end
 end
