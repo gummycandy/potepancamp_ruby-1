@@ -17,11 +17,11 @@ if memo_type == 1
     
     memo_content = $stdin.readlines
     
-    CSV.open("@{newfile_name}.csv", "w") do |newfile_name|
-        newfile_name << ["@{memo_content}"]
+    CSV.open("#{newfile_name}.csv", "w") do |newfile_name|
+        newfile_name << ["#{memo_content}"]
     end
     
-else
+elsif memo_type == 2
     
     puts "拡張子を除いた編集を実行するファイル名を入力してください"
     
@@ -32,12 +32,7 @@ else
     
     memo_content = $stdin.readlines
     
-    f = CSV.open(updatefile_name.csv)
-    s = f.read
-    f.close
-    p s
-    
-    CSV.open("@{updatefile_name}.csv", "w") do |updatefile_name|
-        updatefile_name << ["@{memo_content}"]
+    CSV.open("#{updatefile_name}.csv", "a") do |updatefile_name|
+        updatefile_name << ["#{memo_content}"]
     end
 end
